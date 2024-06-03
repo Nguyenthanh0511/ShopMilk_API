@@ -11,6 +11,7 @@ namespace Service.Dto
         public int CaId { get; set; }
         public int ProdId { get; set; }
         public int? Quantity { get; set; }
-        public decimal? ProdPrice { get; set; }
+        public decimal? ProdPriceTotal { get; set; }
+        
     }
 }

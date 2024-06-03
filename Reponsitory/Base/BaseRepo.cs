@@ -23,7 +23,7 @@ namespace Reponsitory.Base
         {
             return _context.Set<T>().ToList();
         }
-        public T? Get(string id)
+        public virtual T? Get(string id)
         {
             return _context.Set<T>().Find(id);
         }

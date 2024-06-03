@@ -11,5 +11,6 @@ namespace Reponsitory.IRepo
     public interface ICartRepo : IBaseRepo<Cart>
     {
         //Thêm cart thì sẽ tăng thêm số lượng
+        Cart GetCartDetail(string id,string prodid); //( có thể xá
     }
 }

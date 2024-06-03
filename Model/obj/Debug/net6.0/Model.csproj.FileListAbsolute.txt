@@ -27,3 +27,4 @@ D:\USB_MSI\VS\Backend\BTL_Backend\ThucTap4_BTL_Backend\ShopMilk\Model\obj\Debug\
 D:\USB_MSI\VS\Backend\BTL_Backend\ThucTap4_BTL_Backend\ShopMilk\Model\obj\Debug\net6.0\Model.pdb
 D:\USB_MSI\VS\Backend\BTL_Backend\ThucTap4_BTL_Backend\ShopMilk\Model\obj\Debug\net6.0\Model.genruntimeconfig.cache
 D:\USB_MSI\VS\Backend\BTL_Backend\ThucTap4_BTL_Backend\ShopMilk\Model\obj\Debug\net6.0\ref\Model.dll
+D:\USB_MSI\VS\Backend\BTL_Backend\ThucTap4_BTL_Backend\ShopMilk\Model\obj\Debug\net6.0\Model.sourcelink.json

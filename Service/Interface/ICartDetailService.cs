@@ -10,8 +10,14 @@ using System.Threading.Tasks;
 
 namespace Service.Interface
 {
-    public interface ICartDetailService:IBaseService<CartDetail,CartDetailDto,ICartDetailRepo>
+    public interface ICartDetailService<c> where c : CartDetail
     {
-        //public void AddCartDetail(CartDetail cartDetail);
+        bool Flag { get; set; }
+        string Error { get; set; }
+        CartDetail ObjectDetail { get; set; }
+        List<CartDetail> ObjList { get; set; }
+        public void addcartdetail(string UserId,string productid,int quantity);
+        public void removecartdetail(string UserId, string productid, int quantity);
+        public void getAllCartDetail(string UserId);
     }
 }

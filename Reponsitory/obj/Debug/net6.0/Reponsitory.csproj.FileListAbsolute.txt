@@ -33,3 +33,4 @@ D:\USB_MSI\VS\Backend\BTL_Backend\ThucTap4_BTL_Backend\ShopMilk\Reponsitory\obj\
 D:\USB_MSI\VS\Backend\BTL_Backend\ThucTap4_BTL_Backend\ShopMilk\Reponsitory\obj\Debug\net6.0\Reponsitory.pdb
 D:\USB_MSI\VS\Backend\BTL_Backend\ThucTap4_BTL_Backend\ShopMilk\Reponsitory\obj\Debug\net6.0\Reponsitory.genruntimeconfig.cache
 D:\USB_MSI\VS\Backend\BTL_Backend\ThucTap4_BTL_Backend\ShopMilk\Reponsitory\obj\Debug\net6.0\ref\Reponsitory.dll
+D:\USB_MSI\VS\Backend\BTL_Backend\ThucTap4_BTL_Backend\ShopMilk\Reponsitory\obj\Debug\net6.0\Reponsitory.sourcelink.json

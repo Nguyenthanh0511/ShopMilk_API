@@ -94,16 +94,18 @@ namespace ShopMilk.Controllers
         }
         //[Authorize(Roles = "Admin")]
         [HttpPut]
-        public IActionResult Update([FromForm] Product entity, IList<IFormFile> listFile,List<Gallery> listFileDelete)
+        public IActionResult Update([FromForm] Product entity)
         {
             Product product = new Product()
             {
                 ProdId = entity.ProdId,
                 ProdTitle = entity.ProdTitle,
                 ProdDescription = entity.ProdDescription,
-                ProdImageUrl = entity.ProdImageUrl
+                ProdImageUrl = entity.ProdImageUrl,
+                ProdPrice = entity.ProdPrice,
+                CateId = entity.CateId
             };
-            _productService.Update(product, listFile, listFileDelete);
+            _productService.Update(product);
             if(_productService.Flag)
             {
                 _productService.Get(entity.ProdId);

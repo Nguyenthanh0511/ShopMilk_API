@@ -18,5 +18,6 @@ namespace Service.Dto
         public string? ProdTitle { get; set; }
         public decimal? ProdPrice { get; set; }
         public string? CateId { get; set; }
+
     }
 }

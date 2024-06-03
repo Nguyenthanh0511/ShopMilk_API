@@ -33,3 +33,4 @@ D:\USB_MSI\VS\Backend\BTL_Backend\ThucTap4_BTL_Backend\ShopMilk\Service\obj\Debu
 D:\USB_MSI\VS\Backend\BTL_Backend\ThucTap4_BTL_Backend\ShopMilk\Service\obj\Debug\net6.0\refint\Service.dll
 D:\USB_MSI\VS\Backend\BTL_Backend\ThucTap4_BTL_Backend\ShopMilk\Service\obj\Debug\net6.0\Service.pdb
 D:\USB_MSI\VS\Backend\BTL_Backend\ThucTap4_BTL_Backend\ShopMilk\Service\obj\Debug\net6.0\ref\Service.dll
+D:\USB_MSI\VS\Backend\BTL_Backend\ThucTap4_BTL_Backend\ShopMilk\Service\obj\Debug\net6.0\Service.sourcelink.json

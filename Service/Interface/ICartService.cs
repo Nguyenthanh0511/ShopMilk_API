@@ -12,5 +12,8 @@ namespace Service.Interface
 {
     public interface ICartService:IBaseService<Cart,CartDto,ICartRepo>
     {
+        //public void AddToCart(string UserId, string ProductId,int quantity);
+        //public void RemoveToCart(string CartId, string ProductId);
+        //public void GetAllCart();
     }
 }

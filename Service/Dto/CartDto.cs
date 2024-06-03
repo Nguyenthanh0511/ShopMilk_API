@@ -8,8 +8,9 @@ namespace Service.Dto
 {
     public class CartDto
     {
-        public int Id { get; set; }
-        public DateTime date { get; set; }
+        public int CaId { get; set; }
+        public DateTime Cadate { get; set; }
         public int UserId {  get; set; }
+        public List<CartDetailDto> CartDetailDtos { get; set; }
     }
 }
