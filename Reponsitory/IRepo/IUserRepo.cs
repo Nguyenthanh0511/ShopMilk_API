@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Reponsitory.IRepo
 {
-    public interface IUsersRepo
+    public interface IUserRepo:IBaseRepo<User>
     {
-        public IUsersRepo? findUserLogin(User user);
+        public User findUserLogin(User user);
     }
 }

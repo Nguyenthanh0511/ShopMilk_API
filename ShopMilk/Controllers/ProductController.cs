@@ -9,20 +9,16 @@ using Service.Interface;
 namespace ShopMilk.Controllers
 {
     [ApiController]
-    [Route("api2/[Controller]/[action]")]
+    [Route("api/[Controller]/[action]")]
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
         public readonly IMapper _mapper;
-
         public ProductController(IProductService productService, IMapper mapper)
         {
             _productService = productService;
             _mapper = mapper;
         }
-
-
-
         [HttpGet("{id}")]
         public IActionResult Get(string id) {
             _productService.Get(id);

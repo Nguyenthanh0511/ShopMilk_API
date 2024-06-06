@@ -156,3 +156,4 @@ D:\USB_MSI\VS\Backend\BTL_Backend\ThucTap4_BTL_Backend\ShopMilk\ShopMilk\obj\Deb
 D:\USB_MSI\VS\Backend\BTL_Backend\ThucTap4_BTL_Backend\ShopMilk\ShopMilk\obj\Debug\net6.0\ShopMilk.genruntimeconfig.cache
 D:\USB_MSI\VS\Backend\BTL_Backend\ThucTap4_BTL_Backend\ShopMilk\ShopMilk\obj\Debug\net6.0\ref\ShopMilk.dll
 D:\USB_MSI\VS\Backend\BTL_Backend\ThucTap4_BTL_Backend\ShopMilk\ShopMilk\obj\Debug\net6.0\ShopMilk.sourcelink.json
+D:\USB_MSI\VS\Backend\BTL_Backend\ThucTap4_BTL_Backend\ShopMilk\ShopMilk\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

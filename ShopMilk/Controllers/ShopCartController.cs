@@ -11,10 +11,10 @@ namespace ShopMilk.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class ShopCart : ControllerBase
+    public class ShopCartController : ControllerBase
     {
         private readonly ICartDetailService<CartDetail> _Service;
-        public ShopCart(ICartDetailService<CartDetail> _service)
+        public ShopCartController(ICartDetailService<CartDetail> _service)
         {
             _Service = _service;
         }

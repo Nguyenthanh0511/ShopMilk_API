@@ -9,17 +9,18 @@ using System.Threading.Tasks;
 
 namespace Reponsitory.Repo
 {
-    public class UserRepo : BaseRepo<User> , IUsersRepo
+    public class TUserRepo : BaseRepo<User> , IUserRepo
     {
         private Shopmilk_5Context _context;
-        public UserRepo(Shopmilk_5Context shop) : base(shop)
+        public TUserRepo(Shopmilk_5Context shop) : base(shop)
         {
             _context = shop;
         }
 
-        public IUsersRepo? findUserLogin(User user)
+        public User findUserLogin(User  user)
         {
-            return (IUsersRepo?)_context.Users.Where(x => x.UUserName == user.UUserName && x.UPassword == user.UPassword);
+            return _context.Users.Where(x => x.UUserName == user.UUserName && x.UPassword == user.UPassword).FirstOrDefault();
         }
+
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ShopMilk")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+14ab455b3f3dcedb86e26ff8a152019e0a44e075")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8fb38bb9861aca3feb598f94398066d39245c5c0")]
 [assembly: System.Reflection.AssemblyProductAttribute("ShopMilk")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ShopMilk")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

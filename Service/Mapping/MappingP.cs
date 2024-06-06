@@ -15,11 +15,14 @@ namespace Service.Mapping
             CreateMap<Product, ProductDto>()
                .ForMember(dest => dest.ProdId, opt => opt.MapFrom(src => src.ProdId))
                .ReverseMap();
-
             CreateMap<Gallery, GalleryDto>()
                 .ForMember(dest => dest.GId, opt => opt.MapFrom(src => src.GId))
                 .ReverseMap();
-            CreateMap<Category,CategoryDto>();
+            CreateMap<Category, CategoryDto>()
+                .ForMember(dest => dest.CateId, opt => opt.MapFrom(src => src.CateId))
+                .ReverseMap();
+            CreateMap<User, UserDto>()
+                .ForMember(u => u.username, opt => opt.MapFrom(src => src.UUserName)).ReverseMap();
         }
     }
 }

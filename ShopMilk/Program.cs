@@ -9,6 +9,10 @@ using AutoMapper;
 using Service.Mapping;
 using Model.Model;
 using Service.Base;
+using ShopMilk.HelperAuthen;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 //using Service.Implement;
 //using Service.Interface;
 
@@ -18,8 +22,30 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+//Configure about Authentication
+JWTAuthen.Issuer = builder.Configuration["Jwt:Issuer"];
+JWTAuthen.KeyString = builder.Configuration["Jwt:KeyString"];
+JWTAuthen.Key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]));
+JWTAuthen.Audience = builder.Configuration["Jwt:Audience"];
+// add service 
+builder.Services.AddAuthentication(option =>
+{
+    option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateAudience = true,
+        ValidateIssuer = true,
+        ValidateIssuerSigningKey = true,
+        ValidAudience = JWTAuthen.Audience,
+        ValidIssuer = JWTAuthen.Issuer,
+        IssuerSigningKey = JWTAuthen.Key,
+    };
+});
 
-// Cấu hình dịch vụ
+
+// Configure service
 // Đăng ký DbContext với chuỗi kết nối
 string getConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
@@ -33,24 +59,23 @@ builder.Services.AddScoped<IGalleryRepo, GalleryRepo>();
 builder.Services.AddScoped<IOrderRepo, OrderRepo>();
 builder.Services.AddScoped<ICartRepo, CartRepo>();
 builder.Services.AddScoped<ICartDetailRepo, CartDetailRepo>();
+builder.Services.AddScoped<IUserRepo,TUserRepo>();
 //Service
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICartDetailService<CartDetail>, CartDetailService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IProductService,ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IGalleryService,GalleryService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
-
+//Auto mapping
 builder.Services.AddAutoMapper(typeof(MappingP));
-
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
-
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
+//Allow at Frontend to call API
 builder.Services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
     .AllowAnyMethod()
     .AllowAnyHeader()));
