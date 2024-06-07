@@ -13,6 +13,10 @@ using ShopMilk.HelperAuthen;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.Options;
+using System.Reflection.Metadata;
+using Microsoft.AspNetCore.Builder;
 //using Service.Implement;
 //using Service.Interface;
 
@@ -59,21 +63,45 @@ builder.Services.AddScoped<IGalleryRepo, GalleryRepo>();
 builder.Services.AddScoped<IOrderRepo, OrderRepo>();
 builder.Services.AddScoped<ICartRepo, CartRepo>();
 builder.Services.AddScoped<ICartDetailRepo, CartDetailRepo>();
-builder.Services.AddScoped<IUserRepo,TUserRepo>();
+builder.Services.AddScoped<IUserRepo, TUserRepo>();
 //Service
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICartDetailService<CartDetail>, CartDetailService>();
 builder.Services.AddScoped<ICartService, CartService>();
-builder.Services.AddScoped<IProductService,ProductService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<IGalleryService,GalleryService>();
+builder.Services.AddScoped<IGalleryService, GalleryService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 //Auto mapping
 builder.Services.AddAutoMapper(typeof(MappingP));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(
+    option =>
+    {
+        option.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "My API", Version = "v1" });
+        option.AddSecurityDefinition("Bearer",new OpenApiSecurityScheme
+    {
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Name = "Authorization",
+        Description = "Bearer authentication with JWT token",
+        Type = SecuritySchemeType.Http
+    });
+        option.AddSecurityRequirement(new OpenApiSecurityRequirement {
+        {
+            new OpenApiSecurityScheme {
+                Reference = new OpenApiReference {
+                    Id = "Bearer",
+                    Type = ReferenceType.SecurityScheme
+                }
+            },
+            new List < string > ()
+        }
+    });
+    });
 
 //Allow at Frontend to call API
 builder.Services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
@@ -89,9 +117,11 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    //add swagger configure the new
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API v1"));
 }
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

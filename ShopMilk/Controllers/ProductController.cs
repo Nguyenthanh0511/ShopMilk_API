@@ -69,6 +69,7 @@ namespace ShopMilk.Controllers
         //    }
         //}
         [HttpPost]
+        [Authorize(Roles = "Admin")] // Endpoint is Admin
         public IActionResult Create([FromForm] Product entity)
         {
             Category cate = new Category();

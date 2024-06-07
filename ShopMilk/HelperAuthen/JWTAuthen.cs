@@ -55,7 +55,7 @@ namespace ShopMilk.HelperAuthen
             }
         }
         //
-        public static string GenerateToke(string id, string role)
+        public static string GenerateToke(string id, string role) // this is func, which help to convert the role of user
         {
             var credientials = new SigningCredentials(Key, SecurityAlgorithms.HmacSha256);
             var claims = new List<Claim>

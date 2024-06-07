@@ -46,7 +46,7 @@ namespace ShopMilk.Controllers
         [HttpPost]
         public IActionResult Register([FromForm]User user) {
             user.UPassword = JWTAuthen.hashPassword(user.UPassword); // My password is short in the database, have to change contraint in a table.
-            user.URole = "Admin";
+            //user.URole = "Admin";
             user.UId = Guid.NewGuid().ToString().Substring(1,15);
             userService.Create(user);
             if (userService.Flag)
