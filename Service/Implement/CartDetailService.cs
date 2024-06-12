@@ -37,7 +37,7 @@ namespace Service.Implement
         {
             try
             {
-                //Check user
+                //Check user containt cart
                 var cart = _cartRepo.GetAll().FirstOrDefault(x => x.UId == UserId);
                 if(cart== null)
                 {
@@ -130,7 +130,7 @@ namespace Service.Implement
         {
             try
             {
-                var cart = _cartRepo.GetAll().FirstOrDefault(x => x.UId == UserId);
+                //var cart = _cartRepo.GetAll().FirstOrDefault(x => x.UId == UserId);
                 //Check user have cart contants detail have product
 
                 ObjList = _cartDetailRepo.GetAllCart(UserId);

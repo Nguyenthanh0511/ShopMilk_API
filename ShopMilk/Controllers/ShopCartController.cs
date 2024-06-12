@@ -18,7 +18,36 @@ namespace ShopMilk.Controllers
         {
             _Service = _service;
         }
-        [HttpPost("{userId}/add")]
+        [HttpGet("{userId}")]
+        public IActionResult GetAllCart(string userId)
+        {
+           _Service.getAllCartDetail(userId);
+            var getAllCart = _Service.ObjList;
+            if (_Service.Flag)
+            {
+                var displayCart = getAllCart.Select(cd => new {
+                    cd.CaId,
+                    cd.ProdId,
+                    cd.Quantity,
+                    cd.ProdPrice,
+                    Product = new
+                    {
+                        cd.Prod.ProdId, cd.Prod.ProdTitle, cd.Prod.ProdImageUrl, cd.Prod.ProdPrice
+                        , Galleries = cd.Prod.Galleries.Select(gl => new {
+                            //galleries have foreign key is product id, they have relationships one:many
+                            gl.GThumbnail, gl.GId
+                        })
+                    }
+                });
+
+                return Ok(displayCart);
+            }
+            else
+            {
+                return BadRequest(_Service.Error);
+            }
+        }
+        [HttpPost]
         public IActionResult AddCart([FromForm] string UserId, [FromForm] string Productid, [FromForm] int quantity)
         {
 
@@ -32,7 +61,7 @@ namespace ShopMilk.Controllers
                 return BadRequest();
             }
         }
-        [HttpPost("{userId}/add")]
+        [HttpPost]
         public IActionResult RemoveCart([FromForm] string UserId, [FromForm] string Productid, [FromForm] int quantity)
         {
             _Service.removecartdetail(UserId, Productid, quantity);
@@ -45,30 +74,11 @@ namespace ShopMilk.Controllers
                 return BadRequest(_Service.Error);
             }
         }
-        [HttpGet("{userId}")]
-        public IActionResult GetCart(string userId)
-        {
-            _Service.getAllCartDetail(userId);
-            var getAllCart = _Service.ObjList;
-            if (_Service.Flag)
-            {
-                return Ok(getAllCart.Select(cd => new
-                {
-                    cd.CaId,
-                    cd.ProdId,
-                    cd.Quantity,
-                    cd.ProdPrice,
-                    Product = new
-                    {
-                        cd.Prod.ProdId, cd.Prod.ProdTitle
-                    }
-                }));
-            }
-            else
-            {
-                return BadRequest(_Service.Error);
-            }
-        }
+        //[HttpGet("{userName}")]
+        //public IActionResult GetFollowId(string userName)
+        //{
+        //    _Service.
+        //}
 
         //[HttpGet("{userId}")]
         //public IActionResult GetCart([FromForm] string userId)

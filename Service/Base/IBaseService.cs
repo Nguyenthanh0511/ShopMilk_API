@@ -5,13 +5,13 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Service.Base
 {
-
-    public interface IBaseService<T, TDto, TRepo> where T : class where TDto : class where TRepo : IBaseRepo<T>
+    public interface IBaseService<T, TDto, TRepo> 
+        where T : class 
+        where TDto : class 
+        where TRepo : IBaseRepo<T>
     {
-
         T? ObjDetail { get; set; }
         List<T> ObjList { get; set; }
         TDto ObjDetailDto { get; set; }
@@ -25,6 +25,8 @@ namespace Service.Base
         void Create(T entity);
         void Update(T entity);
         void Delete(T entity);
-        void Delete(int id);
+        void Delete(string id);
     }
 }
+
+

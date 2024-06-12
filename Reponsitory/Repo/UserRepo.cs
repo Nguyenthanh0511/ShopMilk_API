@@ -22,5 +22,10 @@ namespace Reponsitory.Repo
             return _context.Users.Where(x => x.UUserName == user.UUserName && x.UPassword == user.UPassword).FirstOrDefault();
         }
 
+        public string returnFollowIdRepo(string username)
+        {
+            string idUser = _context.Users.Where(x => x.UUserName == username).Select(id=>id.UId).FirstOrDefault();
+            return idUser;
+        }
     }
 }

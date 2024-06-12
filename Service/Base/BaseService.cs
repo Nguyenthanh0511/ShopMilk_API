@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Service.Base
 {
-    public class BaseService<T,TDto,TRepo> : IBaseService<T, TDto, TRepo> where T : class,new() where TDto : class, new() where TRepo : IBaseRepo<T>
-
+    public class BaseService<T,TDto,TRepo> : IBaseService<T, TDto, TRepo> 
+        where T : class,
+        new() where TDto : class, 
+        new() where TRepo : IBaseRepo<T>
     {
         public virtual T? ObjDetail { get; set; }
         public List<T> ObjList { get; set; }
@@ -19,7 +20,6 @@ namespace Service.Base
         public string Error { get; set; }
         public TRepo ThisRepo { get; set; }
         private readonly IMapper _mapper;
-
         public BaseService(TRepo trepo,IMapper _map)
         {
             ObjDetail = new T();
@@ -30,7 +30,6 @@ namespace Service.Base
             Error = "";
             ThisRepo = trepo;   
             _mapper = _map ?? throw new ArgumentNullException(nameof(_mapper));
-
         }
         public virtual void Create(T entity)
         {
@@ -51,7 +50,7 @@ namespace Service.Base
                 ThisRepo.Delete(entity);
             }catch( Exception ex) { Error = ex.Message; Flag=false; }
         }
-        public void Delete(int id)
+        public void Delete(string id)
         {
             try
             {
@@ -75,7 +74,6 @@ namespace Service.Base
                 Flag = false;
             }
         }
-
         public List<T> GetAll()
         {
             try

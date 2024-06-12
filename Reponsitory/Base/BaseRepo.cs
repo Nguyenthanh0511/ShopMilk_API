@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Reponsitory.Base
 {
     public class BaseRepo<T> : IBaseRepo<T> 
@@ -13,12 +12,10 @@ namespace Reponsitory.Base
     {
         private readonly Shopmilk_5Context _context;
         //public DbSet<T> _dbSet { get; set; }
-
         public BaseRepo(Shopmilk_5Context shop)
         {
             _context = shop;
         }
-
         public List<T> GetAll()
         {
             return _context.Set<T>().ToList();
@@ -49,7 +46,7 @@ namespace Reponsitory.Base
             _context.Set<T>().Update(entity); 
             _context.SaveChanges();
         }
-        public virtual void Delete(int id)
+        public virtual void Delete(string id)
         {
             T entity = _context.Set<T>().Find(id);
             // Nếu id của entity.id bằng với bảng có khóa ngoại thì xóa cả bảng trường dữ liệu đấy
@@ -69,7 +66,7 @@ namespace Reponsitory.Base
             _context.Set<T>().Remove(entity) ;
             _context.SaveChanges();
         }
-        public void Delete(List<int> entities)
+        public void Delete(List<string> entities)
         {
             foreach(var item in entities)
             {

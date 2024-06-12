@@ -81,15 +81,15 @@ builder.Services.AddSwaggerGen(
     option =>
     {
         option.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "My API", Version = "v1" });
-        option.AddSecurityDefinition("Bearer",new OpenApiSecurityScheme
-    {
-        Scheme = "Bearer",
-        BearerFormat = "JWT",
-        In = ParameterLocation.Header,
-        Name = "Authorization",
-        Description = "Bearer authentication with JWT token",
-        Type = SecuritySchemeType.Http
-    });
+        option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+            Scheme = "Bearer",
+            BearerFormat = "JWT",
+            In = ParameterLocation.Header,
+            Name = "Authorization",
+            Description = "Bearer authentication with JWT token",
+            Type = SecuritySchemeType.Http
+        });
         option.AddSecurityRequirement(new OpenApiSecurityRequirement {
         {
             new OpenApiSecurityScheme {
@@ -101,7 +101,8 @@ builder.Services.AddSwaggerGen(
             new List < string > ()
         }
     });
-    });
+    }
+    );
 
 //Allow at Frontend to call API
 builder.Services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
@@ -121,7 +122,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API v1"));
 }
 app.UseHttpsRedirection();
-app.UseAuthentication();
+app.UseAuthentication(); // add to help signing cerdential
 app.UseAuthorization();
 
 app.MapControllers();

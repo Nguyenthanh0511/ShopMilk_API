@@ -21,39 +21,5 @@ namespace ShopMilk.Controllers
             _Service = _service;
             _map = map;
         }
-        //[HttpPost("{userId}/add")]
-        //public IActionResult AddToCart([FromForm]string userId, [FromForm]string productId, [FromForm]int quantity) {
-        //    _Service.AddToCart(userId, productId, quantity);
-        //    if (_Service.Flag)
-        //    {
-        //        return Ok(_Service.ObjDetail);
-        //    }
-        //    else
-        //    {
-        //        return BadRequest(_Service.Error);
-        //    }
-        //}
-
-        //[HttpGet]
-        //public IActionResult GetRemove(string cartId,string productId)
-        //{
-        //    _Service.RemoveToCart(cartId, productId);
-        //    if (_Service.Flag)
-        //    {
-        //        return Ok(_Service.ObjDetail);
-        //    }
-        //    else
-        //    {
-        //        return BadRequest(_Service.Error);
-        //    }
-        //}
-        //[HttpPost]
-        //public IActionResult AddToCart(Product product)
-        //{
-        //    // Lấy product theo id
-        //    var prod = productRepo.Get(product.ProdId);
-        //    // Thêm product theo id vào
-        //    _Service.Create();
-        //}
     }
 }

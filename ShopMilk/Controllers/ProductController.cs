@@ -69,7 +69,7 @@ namespace ShopMilk.Controllers
         //    }
         //}
         [HttpPost]
-        [Authorize(Roles = "Admin")] // Endpoint is Admin
+        [Authorize(Roles = "Admin")] // Endpoint is Admi
         public IActionResult Create([FromForm] Product entity)
         {
             Category cate = new Category();
@@ -77,7 +77,9 @@ namespace ShopMilk.Controllers
                 ProdId = entity.ProdId,
                 ProdImageUrl = entity.ProdImageUrl,
                 ProdDescription = entity.ProdDescription,
-                CateId = cate.CateId
+                CateId = entity.CateId,
+                ProdTitle = entity.ProdTitle,
+                ProdPrice = entity.ProdPrice
             };
             _productService.Create(product);
             if(_productService.Flag)
@@ -114,11 +116,11 @@ namespace ShopMilk.Controllers
             }
         }
         [HttpPost]
-        public  IActionResult Delete(int id)
+        public  IActionResult Delete([FromForm]string prodIdFormat)
         {
             try
             {
-                _productService.Delete(id);
+                _productService.Delete(prodIdFormat);
                 if (_productService.Flag)
                 {
                     return Ok("Product delete succesfuly");

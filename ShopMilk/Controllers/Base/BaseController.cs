@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Reponsitory.Base;
 using Service.Base;
-
 namespace ShopMilk.Controllers.NewFolder
 {
-    public class BaseController<T, TDto, TRepo, TService> : Controller where T : class where TDto : class where TRepo : IBaseRepo<T> where TService : IBaseService<T, TDto, TRepo>
+    public class BaseController<T, TDto, TRepo, TService> : Controller 
+        where T : class 
+        where TDto : class 
+        where TRepo : IBaseRepo<T> where TService : IBaseService<T, TDto, TRepo>
     {
         public readonly TService _Service;
         public BaseController(TService _service)
@@ -52,7 +54,7 @@ namespace ShopMilk.Controllers.NewFolder
         }
 
         [HttpPost]
-        public virtual IActionResult Create([FromBody]T entity)
+        public virtual IActionResult Create([FromForm]T entity)
         {
             _Service.Create(entity);
             if (_Service.Flag)
@@ -78,7 +80,7 @@ namespace ShopMilk.Controllers.NewFolder
             }
         }
         [HttpPost]
-        public virtual IActionResult Delete(int id)
+        public virtual IActionResult Delete([FromForm]string id)
         {
             _Service.Delete(id);
             if (_Service.Flag)

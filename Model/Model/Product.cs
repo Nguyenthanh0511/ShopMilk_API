@@ -29,3 +29,4 @@ namespace Model.Model
         public virtual ICollection<OrdersDetail> OrdersDetails { get; set; }
     }
 }
+

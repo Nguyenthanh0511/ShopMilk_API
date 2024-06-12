@@ -27,11 +27,12 @@ namespace Reponsitory.Repo
         {
             //var cartDetail = _context.CartDetails.Where(x=>x.CaId == cartId).ToList();
             //return cartDetail;
-            return _context.Carts.Where(u=>u.UId == userId)
-                    .Include(c=>c.CartDetails)
+            var listCart = _context.Carts.Where(u => u.UId == userId)
+                    .Include(c => c.CartDetails)
                     .ThenInclude(p => p.Prod)
-                    .SelectMany(mn=>mn.CartDetails)
+                    .SelectMany(mn => mn.CartDetails)
                     .ToList();
+            return listCart;
         }
     }
 }

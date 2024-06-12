@@ -15,9 +15,10 @@ namespace Reponsitory.Base
         void Create(T entity);
         void Create(List<T> listEntity);
         void Update(T entity);
-         void Delete(int id);
+        void Delete(string id);
         void Delete(T entity);
-        void Delete(List<int> listEntity);
+        void Delete(List<string> listEntity);
         void Delete(List<T> listEntity);
     }
 }
+

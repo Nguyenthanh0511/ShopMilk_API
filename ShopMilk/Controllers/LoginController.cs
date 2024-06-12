@@ -15,7 +15,7 @@ namespace ShopMilk.Controllers
         {
             userService = u;
         }
-        [HttpPost(Name ="Login")]
+        [HttpPost]
         public IActionResult Login([FromForm] User user)
         {
             var entity = new User
