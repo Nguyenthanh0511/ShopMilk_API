@@ -270,7 +270,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - All contributors to the ShopMilk_API project and others ( Increase code backend )
 
 ## Contact
-- Developer: [Your Name]
-- Email: [Your Email]
+- Developer: [Nguyen Trung Thanh]
+- Email: [nguyentrungthanhdev@gmail.com]
 - Project Link: https://github.com/Nguyenthanh0511/ShopMilk_API
 - Frontend Repository: [https://github.com/Nguyenthanh0511/FE_Shopmilk]
